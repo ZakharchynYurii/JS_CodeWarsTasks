@@ -8,29 +8,63 @@
 // result:  7 + 3 + 5 = 15  -->  1 + 5 = 6
 
 function lifePathNumber(dateOfBirth) {
-    let arr = [];
-    let subArr = [];
-    let resArr = [];
+    let dataOfBirthdayArr = dateOfBirth.split('-');
 
-    dateOfBirth.split('-').forEach(element => {
-        subArr.push(element.split(""))
-    });
+    function sumator(array) {
+        let finalArr = [];
 
-    console.log(subArr)
+        array.forEach(element => {
+            let num = parseInt(element);
 
+            if(num <= 9){
+                finalArr.push(num);
+            }else{
+                let value = num.toString();
+                let data = 0;
 
-    // subArr.forEach(element => {
-    //    let item = element.reduce((a, b) => {
-    //        return a + b;
-    //    });
-    //
-    //    resArr.push(item)
-    // });
-    //
-    // console.log(resArr);
+                for(let i = 0; i < value.length; i++){
+                    data += parseInt(value[i])
+                }
 
-    return arr
+                if(data <= 9){
+                    finalArr.push(data)
+                }else{
+                    let num1 = data.toString();
+                    let num2 = 0;
+
+                    for(let j = 0; j < num1.length; j++){
+                        num2 += parseInt(num1[j])
+                    }
+
+                    if(num2 <= 9){
+                        finalArr.push(num2)
+                    }
+                }
+            }
+        });
+
+        return finalArr;
+    }
+
+    let res = sumator(dataOfBirthdayArr).reduce((a, b) => {return a + b});
+
+    if(res <= 9){ return res }
+
+    if(res === 10){ return 1 }
+
+    if(res >= 11){
+        let num = res.toString();
+        let value = 0;
+        for(let i = 0; i < num.length; i++){
+            value += parseInt(num[i]);
+        }
+
+        if(value === 10){ return 1 }
+
+        return value;
+    }
 }
 
-let res = lifePathNumber("1879-03-14");
+let res = lifePathNumber("1961-07-04");
 console.log(res);
+

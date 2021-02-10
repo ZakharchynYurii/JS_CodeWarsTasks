@@ -1,3 +1,7 @@
+// Write a function that accepts fight string consists of only small letters and return who wins the fight.
+// When the left side wins return Left side wins!,
+// when the right side wins return Right side wins!, in other case return Let's fight again!
+
 let leftSide = [{name: "w", power: 4}, {name: "p", power: 3}, {name: "b", power: 2}, {name: "s", power: 1}];
 let rightSide = [{name: "m", power: 4}, {name: "q", power: 3}, {name: "d", power: 2}, {name: "z", power: 1}];
 
